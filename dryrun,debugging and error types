@@ -1,0 +1,106 @@
+A dry run is the manual execution of an algorithm using selected input while recording how important values and decisions change.
+
+(The word “dry” means the program is not actually running on a computer. We are simulating its execution on paper or mentally.)
+  when we are doing the dry run we are basically saying we are using paper and pen to solve a issue. 
+  A useful dry run answers:
+
+Which instruction executes next? this or that
+What are the current values? 
+Is the condition true or false?
+Which branch is selected?
+Does the loop run again? 
+What is finally displayed? the output
+
+  Debugging begins with the first mismatch
+A bug is a defect that causes incorrect or unexpected behaviour. Debugging is the systematic process of finding and correcting it.
+
+  When a result is wrong, beginners often say, “The computer is giving the wrong answer.”
+    Usually, the computer is faithfully producing the result described by our instructions. The real question is:
+
+At which exact step did our intended logic and the actual logic become different?
+
+Debugging is not random editing. It is investigation.
+
+Imagine a courier tracking a parcel through ten checkpoints. The parcel was correct at checkpoint 5 but wrong at checkpoint 6.
+  There is little value in blaming checkpoint 10 first. The earliest incorrect checkpoint is where the investigation should focus.
+
+Programs also carry state through checkpoints. A dry run lets us inspect those checkpoints.
+  ________________
+  8 step debugging:
+  1. reproduce : that one particular input that is failing continuesly
+  2.predict: what will be the answer for that input 
+  3.reduce size of input
+  4. trace: note exaclty what is happening observe
+  5.locate exactly where it is failing
+  6. explain : before fixing explain in clear technical terms 
+  7. fix: make the smallest correct fix. the most minimum fix for it. otherwise the whole system can clash potentially.
+  8. retest: run the failure case again.
+
+
+    A disciplined debugging workflow
+Step 1: Reproduce the failure
+Find a specific input that reliably produces an incorrect result. “Sometimes it fails” is not yet a useful debugging case.
+
+Step 2: Write the expected result manually
+If we do not know the correct answer, we cannot identify divergence.
+
+Step 3: Reduce the input
+Prefer the smallest case that still fails. A failure on 1,000 values is difficult to inspect; a failure on three values may reveal the same root cause.
+
+Step 4: Trace relevant state
+Record variables, conditions and chosen branches.
+
+Step 5: Find the first divergence
+Do not focus only on the final wrong answer. Locate the earliest state that differs from expectation.
+
+Step 6: Explain the cause before changing it
+Say, “The product remains zero because multiplication starts from zero,” rather than “Changing it to one seems to work.”
+
+Step 7: Make the smallest correct fix
+Avoid rewriting unrelated logic while investigating one cause.
+
+Step 8: Retest
+Run:
+
+the failing input;
+one or more inputs that previously passed; and
+nearby edge cases.
+A correction can solve one case and accidentally break another.
+
+__________
+  types of error:
+  syntax error 
+  logical
+  runtime
+  __
+  Syntax error
+A syntax error violates the grammar of a programming language.
+
+Example: code may include a missing bracket, misspelled keyword or malformed expression.
+ caution: A compiler or interpreter can often point near the location, although its message may describe the symptom rather than the root cause.
+
+
+Runtime error
+A runtime error occurs after execution begins, when an operation cannot continue normally.
+the program has started running already and now the error is being shown.
+Examples:
+
+dividing by zero;
+trying to access a missing position;
+opening an unavailable file without handling failure; or
+exhausting an allowed resource.
+The exact behaviour depends on the language and environment.
+
+Logical error
+A logical error allows execution to continue but produces incorrect behaviour.
+
+Examples:
+
+using > instead of >= for an inclusive boundary;
+calculating discount after displaying the bill lol;
+initializing factorial to zero;
+checking average marks when every subject must pass; or
+updating the wrong counter.
+Logical errors are often the hardest because the system may not crash. It may confidently produce a believable but incorrect result.
+  this is the error where the user has to do the work.
+
