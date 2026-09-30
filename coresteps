@@ -1,0 +1,19 @@
+in any given problem their are the 5 core steps:
+input : what is given ? in what format ?
+output: what is being asked? 
+rules: What determines the result? the output ?
+constraints: Which inputs are allowed? it doesnt even go till the impplementation it stops and restricts the input itself.
+edge cases: the ones that fall out and break the usual system. (  this requires higher level of designing of the code if not created in a thoughtful way they as the problems)
+ It helps reveal assumptions that are easy to overlook while coding, its also called a corner case, is a valid input near a boundary or one that needs special consideration.
+
+_______________________
+now how to make a proble solvable: 
+u can decompose the problem if its to big into smaller more manageable sections. 
+mainly understand the PATTERN, pattern recognition is the most important, abstraction, hide unnecessary complexity then comes;
+Algorithmic thinking: connect the parts in order
+Arrange the operations and decisions into a valid process. Ask what happens first, which step depends on an earlier result, where a choice is needed, what repeats, and when the process stops.
+The smaller parts must combine into a solution that satisfies the original requirement. A collection of individually useful operations is not enough if they run in the wrong order. 
+    its like giving coffee powder milk sugar and icecubes to the user instead of what he actually ordered, i.e coffeeeee. integration in ORDERED steps is important.
+    _________
+    btw the correctness and efficiency are two diff things the 2 correct algoritms may perform the task succesfully but , they more might not have the same efficiency eg speed and space consumed and time consumed, 
+    one might be more optimised, this is where dsa 's magic starts
