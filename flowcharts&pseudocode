@@ -1,0 +1,12 @@
+ ⊂⊃ Start/End: use an oval or rounded rectangle. Provide one clear Start; there may be several End points, although a shared End is 
+  often easier to follow. These define the entry and exits.
+▰ Input/Output: use a parallelogram for “Read age,” “Accept three marks,” “Display Eligible,” or “Print final bill.”
+  Receiving or displaying data is different from calculating it: total = price + tax is a process; “Display total” is output.
+▭ Process: use a rectangle for a precise action such as area = length × width, count = count + 1, or remainingBalance = balance - amount.
+ “Handle payment” hides too much work if payment logic is what you are explaining.
+🔷Decision: use a diamond for a question such as “PIN correct?”, age >= 18?, i <= N?, or “Balance at least the amount?” Label its outgoing answers.
+➡️Arrow: show which step happens next. The same boxes connected in a different order can describe a different algorithm.
+ 🅾️⭕Connector: link separated portions using matching labels. Use connectors sparingly; a heavily tangled chart may be better broken into smaller charts.
+
+
+ pseudo thats false and that false code a algorithm thats written in any plain language like english and explains in human language the whole algo
