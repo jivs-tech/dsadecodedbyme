@@ -1,0 +1,19 @@
+data structure is a simple way of organizing data so we can perform operations on it.
+
+their are several types of data structures:
+
+| Data structure | Example                     |
+| -------------- | --------------------------- |
+| Array/List     |  [1, 2, 3]                  |
+| String         |   "hello"                   |
+| Hash Map       |  {"apple": 3}               |
+| Set            |  {1, 2, 3}                  |
+| Stack          |  []  used with  append/pop  |
+| Queue          |  deque()                    |
+| Linked List    | Nodes connected together    |
+| Tree           | Hierarchical structure      |
+| Heap           | Priority-based structure    |
+| Graph          | Nodes + connections         |
+
+
+let's learn them individually further in our files hehe ;)
