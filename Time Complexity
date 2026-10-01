@@ -1,0 +1,163 @@
+uk we give a lot of inputs in our programs :
+we ask this that from user and even we have our own loops so time complexity is 
+how much work increases as input increases . more work in sense of much time consumed.
+
+lets go into details:
+ first things first ,
+What does "input" mean?
+The input is the data given to your algorithm.
+For example:
+
+numbers = [10, 20, 30, 40, 50]
+
+The input is this list.
+
+We often call the size of the input n.
+
+Here:
+
+numbers = [10, 20, 30, 40, 50]
+
+There are 5 elements.
+
+Therefore:
+
+n = 5
+
+If:
+
+numbers = [1, 2, 3, ..., 1000]
+
+then:
+
+n = 1000
+
+So whenever you see:
+
+n
+think:
+
+"How big is my input?"
+
+This is extremely important.
+
+What is an "operation"?
+An operation is basically a small piece of work the computer performs.
+
+For example:
+
+x = 10
+
+The computer assigns 10 to x.
+
+Another:
+
+x + y
+
+The computer performs an addition.
+
+Another:
+
+numbers[3]
+
+The computer accesses an element.
+
+We don't normally count every microscopic CPU instruction. and operation
+
+Instead, in DSA, we ask approximately:
+
+"How does the amount of work grow as n grows?"
+thats where::
+ Time Complexity comes in picture
+
+Suppose you have:
+
+numbers = [10, 20, 30, 40, 50]
+
+and:
+
+for number in numbers:
+    print(number)
+
+What happens?
+
+The loop visits:
+
+10
+20
+30
+40
+50
+
+That's 5 iterations.
+
+If there are 100 elements:
+
+100 iterations
+
+If there are 1,000 elements:
+
+1,000 iterations
+
+If there are 1,000,000 elements:
+
+1,000,000 iterations
+
+The amount of work grows roughly at the same rate as the number of elements.
+
+We call this:
+
+O(n)   where n is input 
+
+Read it as:
+
+"Big O of n"
+ ok if n is input what is o ??
+
+__________________________________________________________________
+
+But what does the O actually mean?
+
+This is where beginners often get confused.
+
+O(n) does not mean:
+
+"The program takes exactly n seconds."
+
+It doesn't.
+
+It means approximately:
+
+The amount of work grows proportionally to the input size n.
+
+For example:
+
+n = 10       → roughly 10 units of work
+n = 100      → roughly 100
+n = 1,000    → roughly 1,000
+n = 1,000,000 → roughly 1,000,000
+
+The actual execution time depends on the computer, programming language, implementation, etc.
+
+Big O is primarily about growth.
+__________________________________________________________________
+so basically when we say O(n) we say results(amountof labour(i mean work))
+are directly propotional to the inputs or the elements inputted 
+
+we care abt all this cause (abhi pata nae chalega) u will fell the need of this 
+when u actually start programming and coding on a scalable platform when their are 
+millions of input what say then?? 
+optimization is very very neccesary much 
+much more than we think it is ther is always a solution see, 
+but to find a solution that is efficient i.e: optimized and scalable we need dsa's timecomplexity 
+
+now lets understand the types of time complexity :
+O(1)
+O(log n)
+O(n)
+O(n log n)
+O(n²)
+in next files in detail 
+O(2ⁿ)
+O(n!)
+this ones we will learn later when we do recursion / backtracking.
