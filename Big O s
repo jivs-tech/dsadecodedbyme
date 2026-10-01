@@ -1,0 +1,311 @@
+O(1) constant time
+______________________________
+the amount of work does not depend on how large the input is 
+
+eg:
+
+Example:
+
+numbers = [10, 20, 30, 40, 50]
+
+print(numbers[2])
+
+We're asking for element at index 2.
+
+We don't need to look through:
+
+10
+20
+30
+
+first.
+We directly access it.
+Whether the list contains:
+5 elements
+or: 50000000 elements 
+here we directly acccess the elements : so O(1) is fixed amount of work , irrespective of no of elements
+_________________________________________
+0(n)- linear time
+linear as the name suggests the amount of work grows roughly in proportion to n.
+yes that typicll 45degre angle line on xy axis.
+eg 
+for number in numbers:
+  print(number)
+
+here if n = 5
+we have 5 iterations 
+If:
+
+n = 100
+
+approximately 100 iterations.
+
+If:
+
+n = 1,000
+
+approximately 1,000 iterations.
+
+Therefore:
+
+O(n)
+
+Think:
+
+O(n) = go through the input once
+so the input so is the output 
+This pattern will become extremely important.
+_______________________________________________________________
+3) O(n²) — Quadratic time
+Now look at:
+
+for x in numbers:
+    for y in numbers:
+        print(x, y)
+
+There are two loops.
+Suppose:
+n = 3
+First loop:
+x = 1
+Second loop runs 3 times.
+Then:
+x = 2
+Second loop runs 3 times.
+Then:
+x = 3
+Second loop runs 3 times.
+Total:
+
+3 × 3 = 9
+If:
+n = 10
+then:
+10 × 10 = 100
+If:
+n = 100
+then:
+100 × 100 = 10,000
+If:
+n = 1,000
+then:
+1,000 × 1,000 = 1,000,000
+Therefore:
+O(n²)
+
+Think:
+
+O(n²) = often a loop inside a loop
+
+. Very important: two loops does NOT always mean O(n²)
+
+This is a common beginner mistake.
+
+Look at:
+
+for x in numbers:
+    print(x)
+
+for y in numbers:
+    print(y)
+
+First loop:
+
+n
+
+Second loop:
+
+n
+
+Total:
+
+n + n = 2n
+So the complexity is:
+
+O(n)
+
+NOT O(n²).
+
+Why?
+
+Because the loops aren't nested.
+
+They're running one after another.
+
+💡 Why do we remove the 2?
+
+You might ask:
+
+Why isn't it O(2n)?
+
+Because Big O focuses on how growth behaves when n becomes very large, rather than constant multipliers.
+
+Compare:
+
+2n
+100n
+1,000n
+
+They're all still linear growth.
+
+So we represent them as:
+O(n)
+
+Similarly:
+
+3n²
+50n²
+1,000n²
+
+are all:
+
+O(n²)
+
+Don't worry about the mathematical proof behind this yet.
+
+For DSA interviews, the practical rule is:
+Ignore constant multipliers.
+___________________________________________________________________________________
+4)O(log n)
+
+This one initially feels weird. oops
+
+Let's start with a real-world example.
+Imagine I choose a number from:
+1 → 100
+You need to guess it.
+You could ask:
+Is it 1?
+No.
+Is it 2?
+No.
+Is it 3?
+No.
+...
+Potentially 100 guesses.
+That's basically linear searching:
+O(n)
+But instead, you could ask:
+Is the number greater than 50?
+Suppose I say yes.
+Now you know:
+51 → 100
+You've eliminated half the possibilities.
+Ask:
+Is it greater than 75?
+Suppose yes.
+Now:
+76 → 100
+Again, you've eliminated half.
+Continue:
+
+100 possibilities
+↓
+50
+↓
+25
+↓
+12
+↓
+6
+↓
+3
+↓
+1
+
+You're repeatedly cutting the possibilities roughly in half.
+
+That's the basic idea behind:
+
+O(log n)
+
+💡Why is it called "log"?
+
+You don't need advanced mathematics right now.
+
+Just remember:
+
+log n is basically "how many times can I divide n by 2 before reaching 1?"
+
+For example:
+
+16
+→ 8
+→ 4
+→ 2
+→ 1
+
+That's 4 divisions.
+
+So:
+
+log₂(16) = 4
+
+For:
+
+1,024
+
+you can repeatedly halve:
+1024
+512
+256
+128
+64
+32
+16
+8
+4
+2
+1
+
+Only 10 divisions.
+
+That's why logarithmic algorithms are extremely efficient.
+
+We'll encounter this properly when we learn binary search.
+
+______________________________________________________________________________________
+5) O(n log n)
+
+This is basically a combination of:
+
+n
+
+and:
+
+log n
+
+giving:
+
+O(n log n)
+
+You don't need to derive it yet.
+You'll encounter it especially when we study sorting.
+For now:
+O(n log n) is generally much better than O(n²) for large inputs.
+___________________________________________________________________________________
+O(1)       → barely grows
+O(log n)   → grows very slowly
+O(n)       → grows steadily
+O(n log n) → grows faster
+O(n²)      → grows very quickly
+
+shown in the image in other file 
+A simple ranking
+
+For large inputs, you can generally think:
+
+             Faster
+               ↑
+O(1)           │
+O(log n)       │
+O(n)           │
+O(n log n)     │
+O(n²)          │
+               ↓
+             Slower
+
+This isn't saying every O(n) program is literally faster than every O(log n) program in every situation. 
+It's about asymptotic growth.
+(Asymptotic growth rate is the long-term rate at which a model grows or declines as the input gets large.)
+That distinction will matter later.
