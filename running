@@ -1,0 +1,16 @@
+ Syntax asks whether the instruction follows the language’s writing rules. 
+semantics are the meaning that is bein gconveyed by the syntax of the program 
+ Correctness asks whether that meaning satisfies the requirement.
+
+What happens when you press Run?
+The human-readable program text is source code. For a program that adds two numbers, a simplified sequence is:
+
+The editor saves the source in a file or workspace.
+A compiler or runtime reads it and checks its syntax.
+Language tools translate it into a representation that can be executed.
+The operating system starts a process, with required code and data in memory.
+The program requests input, and the user enters the two values.
+The CPU performs the addition through lower-level instructions.
+The program asks its environment to display the result, such as in a terminal.
+These are coordinated actions behind one button. Their exact order depends on the environment: for example, an interpreter process may already be running before it reads your source.
+
