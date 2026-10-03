@@ -1,0 +1,1012 @@
+What is Space Complexity?
+
+Space complexity = how much extra memory an algorithm needs as the input size increases.
+
+Suppose an algorithm receives:
+
+arr = [10, 20, 30, 40, 50]
+
+The input has 5 elements.
+
+Now imagine the input becomes:
+
+arr = [10, 20, 30, ..., 1_000_000]
+
+The question is:
+
+As the input gets bigger, how much memory does our algorithm need?
+
+That growth is what we study with space complexity.
+
+First understand "space"
+
+A computer needs memory to store things while your program runs.
+
+For example:
+
+x = 10
+name = "Jiya"
+
+Memory is required to store:
+
+x
+name
+temporary calculations
+arrays/lists
+dictionaries
+objects
+recursive function calls
+etc.
+
+So when we talk about space complexity, we're asking:
+
+How much memory does the algorithm use?
+here comes : 
+Input space vs extra space
+
+This distinction is extremely important.
+
+Suppose:
+
+def print_array(arr):
+    for x in arr:
+        print(x)
+
+The input arr already exists.
+
+The algorithm doesn't create another array.
+
+So we usually distinguish:
+
+Input space
+
+Memory occupied by the input itself.
+
+For:
+
+arr = [1, 2, 3, 4, 5]
+
+the input requires space proportional to the number of elements.
+
+That's:
+
+O(n) input space.
+
+--Auxiliary space
+
+The extra memory created/used by the algorithm, excluding the input itself.
+
+For:
+
+def print_array(arr):
+    for x in arr:
+        print(x)
+
+there is essentially no additional data structure growing with n.
+
+So auxiliary space is:
+
+O(1).
+
+Why do interviews usually talk about auxiliary space?
+
+Because the input is already given to you.
+
+The interesting question is:
+
+How much additional memory does my algorithm require to solve the problem?
+
+For example:
+
+def double_array(arr):
+    result = []
+
+    for x in arr:
+        result.append(x * 2)
+
+    return result
+
+Suppose:
+
+arr = [1, 2, 3, 4, 5]
+
+We create:
+
+result = [2, 4, 6, 8, 10]
+
+If the input has n elements, result can also have n elements.
+
+Therefore:
+
+Auxiliary space = O(n).
+
+5. What does O(1) space mean?
+
+O(1) means:
+
+The extra memory does not grow with input size.
+
+Example:
+
+def find_max(arr):
+    maximum = arr[0]
+
+    for x in arr:
+        if x > maximum:
+            maximum = x
+
+    return maximum
+
+What extra variables do we create?
+
+
+--
+maximum
+x
+
+Whether the array has:
+
+10 elements
+
+or:
+
+10 million elements
+
+we still need approximately the same number of variables.
+
+Therefore:
+
+Space complexity = O(1) auxiliary space.
+
+Notice something important:
+
+The algorithm processes n elements, but that does not mean its space complexity is O(n).
+
+It can be:
+
+Time  = O(n)
+Space = O(1)
+
+This is a very common combination.
+
+6. Space complexity is NOT time complexity
+
+This is one of the biggest beginner mistakes.
+
+Consider:
+
+for x in arr:
+    print(x)
+
+If arr contains n elements:
+
+Time
+
+We visit every element.
+
+So:
+
+Time = O(n)
+
+Extra space
+
+We don't create an n-sized data structure.
+
+So:
+
+Space = O(1)
+
+Therefore:
+
+Time:  O(n)
+Space: O(1)
+
+Time asks:
+
+How much work?
+
+Space asks:
+
+How much extra memory?
+
+... What does O(n) space mean?
+
+O(n) means the extra memory grows linearly with input size.  yes that typical linear graph of 45 degree
+
+Example:
+
+def copy_array(arr):
+    result = []
+
+    for x in arr:
+        result.append(x)
+
+    return result
+
+If:
+
+n = 5
+
+we store 5 additional elements.
+
+If:
+
+n = 100
+
+we store 100.
+
+If:
+
+n = 1,000,000
+
+we store 1,000,000.
+
+So:
+
+Space = O(n).
+
+... What does O(n²) space mean?
+
+Suppose we create a matrix:
+
+matrix = []
+
+for i in range(n):
+    row = []
+
+    for j in range(n):
+        row.append(0)
+
+    matrix.append(row)
+
+For:
+
+n = 3
+
+we get:
+
+0 0 0
+0 0 0
+0 0 0
+
+That's:
+
+3 × 3 = 9
+
+elements.
+
+For:
+
+n = 100
+
+we get:
+
+100 × 100 = 10,000
+
+elements.
+
+Therefore:
+
+Space = O(n²).
+
+... The most important space complexities
+
+For interview purposes, you'll frequently encounter:
+
+Space	Meaning
+O(1)	Constant extra memory (doesnt depend on the input size)
+O(log n)	Memory grows logarithmically
+O(n)	Memory grows linearly
+O(n log n)	Memory grows n × log n
+O(n²)	Memory grows quadratically
+
+You don't need to memorize these blindly. You'll learn to recognize why they occur.
+-----------------------lets deep dive=============>>
+1. Understanding O(1) properly
+
+Consider:
+
+a = 10
+b = 20
+c = a + b
+
+Number of variables is fixed.
+
+So:
+
+Space = O(1)
+
+Even if the input is huge.
+
+Another example:
+
+def swap(arr, i, j):
+    temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
+
+Extra memory:
+
+temp
+
+Only constant additional memory.
+
+Therefore:
+
+O(1).
+
+.. A very important trap: loops don't automatically mean O(n) space
+
+Look at:
+
+for i in range(n):
+    print(i)
+
+The loop runs n times.
+
+So:
+
+Time = O(n)
+
+But are we storing all n values?
+
+No.
+
+We're using one i at a time.
+
+Therefore:
+
+Space = O(1)
+
+Compare this:
+
+numbers = []
+
+for i in range(n):
+    numbers.append(i)
+
+Now we're storing all n values.
+
+Therefore:
+
+Time  = O(n)
+Space = O(n)
+Remember:
+
+Number of iterations ≠ amount of memory.
+
+.. Another important trap: creating a list
+
+Consider:
+
+result = []
+
+for i in range(n):
+    result.append(i)
+
+The list grows:
+
+1 element
+2 elements
+3 elements
+...
+n elements
+
+Therefore:
+
+Space = O(n)
+
+But:
+
+for i in range(n):
+    print(i)
+
+doesn't store those values.
+
+Therefore:
+
+Space = O(1) 
+... What about Python's range(n)?
+
+When you write:
+
+for i in range(n):
+
+you should not think:
+
+Python creates a list containing 0, 1, 2, ..., n-1.
+
+In Python 3, range is a range object and  does Not store!  all those integers as a normal list.
+
+So:
+
+for i in range(n):
+    print(i)
+
+has:
+
+Time  = O(n)
+Space = O(1)
+
+ignoring implementation-level details and focusing on algorithmic complexity.
+
+But:
+
+arr = list(range(n))
+
+creates a list containing n elements.
+
+Therefore:
+
+Space = O(n)
+... What about strings?
+
+Suppose:
+
+s = "hello"
+
+A string containing n characters requires memory proportional to n.
+
+So the string itself occupies:
+
+O(n) space.
+
+But again, when analyzing an algorithm, we distinguish between input space and extra space.
+
+Example:
+
+def count_a(s):
+    count = 0
+
+    for char in s:
+        if char == 'a':
+            count += 1
+
+    return count
+
+Input:
+
+s → O(n)
+
+Additional memory:
+
+count → O(1)
+char  → O(1)
+
+Therefore:
+
+Auxiliary space = O(1)
+.. What about a dictionary?
+
+This is extremely important for interviews.
+
+Suppose:
+
+freq = {}
+
+for x in arr:
+    if x not in freq:
+        freq[x] = 1
+    else:
+        freq[x] += 1
+
+If the array contains n different values, the dictionary could contain n entries.
+
+Therefore:
+
+Space = O(n)
+
+This is why hash maps/dictionaries often trade space for time.
+
+For example, you might use a dictionary to make searching faster, but now you're using additional memory.
+so choose wisely 
+..... Space-time tradeoff
+
+This is a major DSA concept.
+
+Sometimes you can use:
+
+more memory → less time
+
+Example:
+
+Suppose:
+
+arr = [5, 2, 8, 1, 9]
+
+You want to quickly know whether a number exists.
+
+You could repeatedly search the array.
+
+Or create:
+
+seen = set(arr)
+
+Now you have additional memory:
+
+Space = O(n)
+
+but membership checking is typically much faster than scanning the entire array.
+
+This idea is called a:
+
+Time-space tradeoff
+
+You'll encounter it constantly in interview problems. (wwe will see this in other files)
+
+.. What is recursion's space complexity?
+
+This is VERY important.
+
+Consider:
+
+def countdown(n):
+    if n == 0:
+        return
+
+    countdown(n - 1)
+
+Call:
+
+countdown(5)
+
+The calls look like:
+
+countdown(5)
+    ↓
+countdown(4)
+    ↓
+countdown(3)
+    ↓
+countdown(2)
+    ↓
+countdown(1)
+    ↓
+countdown(0)
+
+The previous function calls must remain in memory while the deeper calls execute.
+
+This is called the:
+
+call stack!
+
+There are n active recursive calls.
+
+Therefore:
+
+Space = O(n).
+
+Even though we didn't create an array!
+
+.. Stack space
+
+Whenever a function is called, information about that function's execution is stored on the call stack.
+
+For example:
+
+def A():
+    B()
+
+def B():
+    C()
+
+def C():
+    pass
+
+At one point, the stack conceptually contains:
+
+C()
+B()
+A()
+
+After C() finishes:
+
+B()
+A()
+
+After B():
+
+A()
+
+imp : This is why recursion can consume memory.
+
+.. Recursive example: O(n) space
+def factorial(n):
+    if n == 0:
+        return 1
+
+    return n * factorial(n - 1)
+
+For:
+
+factorial(5)
+
+we get:
+
+factorial(5)
+factorial(4)
+factorial(3)
+factorial(2)
+factorial(1)
+factorial(0)
+
+Maximum depth = n.
+
+Therefore:
+
+Space = O(n)
+
+The recursive calls themselves are consuming the additional memory.
+
+... Recursion can have O(log n) space
+
+Consider binary search implemented recursively.
+
+Each call approximately halves the problem:
+
+n
+↓
+n/2
+↓
+n/4
+↓
+n/8
+↓
+...
+
+The number of levels is approximately:
+
+log₂(n)
+
+Therefore the recursion stack requires:
+
+O(log n) space.
+
+This is one reason binary search is important when you study complexity.
+
+... What does O(log n) space actually mean?
+
+You will learn logarithms properly with binary search, but here's the intuition.
+
+Suppose you repeatedly divide something by 2.  (yes divide by 2 )
+
+Start:
+
+1024
+
+Divide by 2:
+
+512
+256
+128
+64
+32
+16
+8
+4
+2
+1
+
+It takes only about 10 divisions.
+
+Because:
+
+2¹⁰ = 1024
+
+So:
+
+log₂(1024) = 10
+
+That's why repeatedly halving something produces O(log n).
+
+..... Nested loops do NOT automatically determine space
+
+Consider:
+
+for i in range(n):
+    for j in range(n):
+        print(i, j)
+
+You might say:
+
+Two loops → O(n²).
+
+That's true for time here:
+
+Time = O(n²)
+
+But space?
+
+We don't store all i and j values.
+
+Only a few variables exist.
+
+Therefore:
+
+Space = O(1)
+
+So:
+
+Time  = O(n²)
+Space = O(1)
+
+This distinction is extremely important.
+
+... Compare these two
+Example A
+for i in range(n):
+    for j in range(n):
+        print(i, j)
+
+Result:
+
+Time  = O(n²)
+Space = O(1)
+Example B
+matrix = []
+
+for i in range(n):
+    row = []
+
+    for j in range(n):
+        row.append(0)
+
+    matrix.append(row)
+
+Result:
+
+Time  = O(n²)
+Space = O(n²)
+
+Why?
+
+Because Example B actually stores n² elements.
+
+... What does "space complexity = O(n)" really mean?
+
+Don't interpret it as:
+
+"The algorithm uses exactly n bytes."
+
+That's wrong.
+
+Big-O describes growth, not exact memory usage.
+
+If an algorithm uses:
+
+3n + 10
+
+units of memory, we simplify it to:
+
+O(n)
+
+If it uses:
+
+5n + 1000
+
+it's still:
+
+O(n)
+
+We care about how memory grows as n becomes very large.
+
+... Why do we ignore constants?
+
+Suppose:
+
+Algorithm A: 2n memory
+Algorithm B: 100n memory
+
+Both grow linearly with n.
+
+So both are:
+
+O(n)
+
+Big-O isn't intended to tell you the exact number of bytes.
+
+It tells you the growth category.
+
+... Why do we ignore smaller terms?
+
+
+We ignore smaller terms in Big-O analysis because Big-O measures asymptotic behavior—how an algorithm's performance or memory usage scales
+as the input size (n) becomes extremely large (approaching infinity).
+When $n$ is sufficiently large, higher-order terms dominate the total count so completely that lower-order terms contribute a negligible percentage to the overall growth rate.
+Suppose memory usage is:
+
+n² + n + 5
+
+For very large n, n² dominates.
+
+Therefore:
+
+O(n²)
+
+Similarly:
+
+n + 1000
+
+becomes:
+
+O(n)
+---
+Dominance at Scale
+Consider an algorithm with a step/space complexity represented by:
+f(n) = n² + 100n + 5000 
+Comparing the contribution of each term across growing values of n:
+
+Input Size (n) | n²             | 100n       | 5000  | Dominance of n^2
+----------------------------------------------------------------------
+n = 10         | 100            | 1,000      | 5,000 | ~1.6%
+n = 1,000      | 1,000,000      | 100,000    | 5,000 | ~90.5%
+n = 100,000    | 10,000,000,000 | 10,000,000 | 5,000 | 99.9%
+
+
+As n grows to real-world large scales (e.g., millions of records), 
+n² dictates almost 100% of the growth rate.
+The terms 100n and 5000 become statistically insignificant.
+Focus on Growth Rate, Not Exact Counts :
+Big-O isn't meant to give the exact number of CPU instructions or bytes of memory—it categorizes algorithms into growth families (e.g., linear, logarithmic, quadratic).
+Adding n to n² doesn't change the fundamental shape of the growth curve; it still scales quadratically.
+Dropping the smaller terms simplifies n² + n + 5 to O(n²), 
+allowing engineers to quickly compare the scalability of different algorithms without getting bogged down in low-level details.
+... A crucial example combining everything
+
+Consider:
+
+def example(arr):
+
+    n = len(arr)
+
+    result = []
+
+    for x in arr:
+        result.append(x * 2)
+
+    return result
+
+Let's analyze it.
+
+Input
+
+arr contains n elements.
+
+Input space:
+
+O(n)
+Extra data structure
+
+result contains n elements.
+
+Therefore:
+
+Auxiliary space = O(n)
+Time
+
+We process every element once:
+
+Time = O(n)
+
+So:
+
+Time             = O(n)
+Auxiliary Space  = O(n)
+
+... Another example
+def find_max(arr):
+
+    maximum = arr[0]
+
+    for x in arr:
+        if x > maximum:
+            maximum = x
+
+    return maximum
+Time
+
+We inspect n elements:
+
+O(n)
+Extra space
+
+Only:
+
+maximum
+x
+
+No growing data structure.
+
+Therefore:
+
+Time = O(n)
+Space = O(1)
+... Another example: dictionary
+def has_duplicate(arr):
+
+    seen = set()
+
+    for x in arr:
+        if x in seen:
+            return True
+
+        seen.add(x)
+
+    return False
+
+Worst case:
+
+arr = [1, 2, 3, 4, 5, ..., n]
+
+We may put every element into seen.
+
+Therefore:
+
+Space = O(n)
+
+The important thing is how large seen can become, not merely the fact that a set exists.
+
+
+-----------------
+| Code / situation                     | Auxiliary Space |
+| ------------------------------------ | --------------: |
+| A few variables                      |        **O(1)** |
+| One list of n elements               |        **O(n)** |
+| One set/dictionary with n entries    |        **O(n)** |
+| n × n matrix                         |       **O(n²)** |
+| Recursion depth n                    |        **O(n)** |
+| Recursion depth log n                |    **O(log n)** |
+| Nested loops without storing results |        **O(1)** |
+| Nested loops storing n² results      |       **O(n²)** |
+
+
+
+---------------------------
+The one sentence you should remember
+
+Space complexity measures how the memory required by an algorithm grows as the input size grows, especially the additional (auxiliary) memory used by the algorithm.
+
+And the most useful question to ask yourself is:
+
+"As n gets bigger, what am I storing that also gets bigger?"
+
+If the answer is nothing → O(1).
+
+If you're storing n things → O(n).
+-------------------------------------------------------------------------------------------
+
+The biggest mistakes to avoid
+❌ "There is a loop, so space is O(n)."
+
+Wrong.
+
+A loop usually affects time, not necessarily space.
+
+❌ "There are two nested loops, so space is O(n²)."
+
+Wrong.
+
+Only true if you're actually storing O(n²) information.
+
+❌ "The input array is O(n), so the algorithm's space is O(n)."
+
+Not necessarily.
+
+The input may already be provided.
+
+You generally report auxiliary space when discussing the algorithm's extra memory.
+
+❌ "A recursive function doesn't create an array, so space is O(1)."
+
+Wrong.
+
+Recursive calls occupy the call stack.
+
+❌ "O(n) means exactly n bytes."
+
+Wrong.
+
+Big-O describes growth, not exact memory consumption.
+If you're storing n × n things → O(n²).
+
+If recursion creates n active calls → O(n).
