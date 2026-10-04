@@ -1,0 +1,432 @@
+
+## 1. What is an array?
+
+An **array** is a data structure used to store multiple values in an ordered sequence.
+
+For example:
+
+```text
+ [10, 20, 30, 40, 50]
+```
+
+Each element has a position called an **index**.
+
+```text
+Value:    10   20   30   40   50
+Index:     0    1    2    3    4
+```
+
+Python's built-in `list` is what we will normally use when solving array problems.
+
+```python
+numbers = [10, 20, 30, 40, 50]
+```
+
+So throughout your DSA preparation, when I say **"array"**, you can generally think:
+
+> **Python list**
+
+---
+
+# 2. Why are arrays important?
+
+Arrays are probably the **most important beginner DSA structure** because many interview problems are built around them.
+
+You need to become comfortable doing things like:
+
+* accessing elements
+* traversing elements
+* updating elements
+* finding values
+* counting values
+* reversing
+* comparing elements
+* calculating sums
+* modifying elements
+* recognizing patterns
+
+For example:
+
+> Find the largest number in an array.
+
+```python
+numbers = [7, 2, 9, 4, 1]
+```
+
+You need to examine the elements and determine:
+
+```text
+9
+```
+
+This looks simple, but the same fundamental skills appear inside much harder problems.
+
+---
+
+# 3. Python list basics
+
+Creating a list:
+
+```python
+numbers = [10, 20, 30, 40]
+```
+
+Empty list:
+
+```python
+numbers = []
+```
+
+Different types can technically exist together:
+
+```python
+items = [10, "hello", 3.5]
+```
+
+But in DSA, you'll usually work with lists containing similar types:
+
+```python
+numbers = [4, 8, 2, 9, 1]
+```
+
+---
+
+# 4. Indexing
+
+Python uses **zero-based indexing**.
+
+That means the first element is index `0`.
+
+```python
+numbers = [10, 20, 30, 40]
+```
+
+| Index | Value |
+| ----: | ----: |
+|     0 |    10 |
+|     1 |    20 |
+|     2 |    30 |
+|     3 |    40 |
+
+Access:
+
+```python
+print(numbers[0])
+```
+
+Output:
+
+```text
+10
+```
+
+```python
+print(numbers[2])
+```
+
+Output:
+
+```text
+30
+```
+
+### Important
+
+If there are `n` elements, the indices are:
+
+```text
+0 → n - 1
+```
+
+So for:
+
+```python
+numbers = [10, 20, 30, 40, 50]
+```
+
+there are 5 elements, but the last index is:
+
+```text
+4
+```
+
+---
+
+# 5. Accessing an element — O(1)
+
+This is an important complexity connection.
+
+```python
+numbers[3]
+```
+
+Python can directly access the element at that index.
+
+So:
+
+**Time complexity: O(1)**
+
+It doesn't need to examine all previous elements.
+
+Whether you access:
+
+```python
+numbers[0]
+```
+
+or:
+
+```python
+numbers[999999]
+```
+
+assuming that index exists, the operation itself is considered **O(1)**.
+
+---
+
+# 6. Updating an element
+
+You can change an element using its index:
+
+```python
+numbers = [10, 20, 30, 40]
+
+numbers[2] = 100
+```
+
+Now:
+
+```python
+[10, 20, 100, 40]
+```
+
+Updating by index is:
+
+**O(1)**
+
+---
+
+# 7. Important Python list operations
+
+You'll use these constantly.
+
+### Access
+
+```python
+numbers[i]
+```
+
+**O(1)**
+
+### Update
+
+```python
+numbers[i] = value
+```
+
+**O(1)**
+
+### Length
+
+```python
+len(numbers)
+```
+
+**O(1)**
+
+### Add to end
+
+```python
+numbers.append(50)
+```
+
+Usually **O(1)** amortized.
+
+Don't worry about the word "amortized" yet. For interview-level beginner analysis, remember:
+
+> `append()` → usually O(1)
+
+### Remove from end
+
+```python
+numbers.pop()
+```
+
+Usually **O(1)**
+
+### Search for a value
+
+```python
+30 in numbers
+```
+
+Potentially:
+
+**O(n)**
+
+because Python may have to inspect every element.
+
+---
+
+# 8. One VERY important distinction
+
+These are different:
+
+```python
+numbers[3]
+```
+
+and
+
+```python
+3 in numbers
+```
+
+The first means:
+
+> "Give me the element at index 3."
+
+That's **O(1)**.
+
+The second means:
+
+> "Does the value 3 exist anywhere in the list?"
+
+That may require scanning the entire list.
+
+That's **O(n)**.
+
+This distinction becomes extremely important later when we learn **hashing**.
+
+---
+
+# 9. Arrays and Python lists — interview perspective
+
+You don't need to get stuck on the theoretical distinction right now.
+
+For this course:
+
+> **Array problem → solve using Python list unless we specifically learn another data structure.**
+
+You'll eventually encounter questions such as:
+
+```text
+Find the maximum element.
+Reverse the array.
+Find duplicates.
+Find two numbers that sum to a target.
+Find the longest subarray...
+```
+
+The underlying input will commonly look like:
+
+```python
+nums = [2, 7, 11, 15]
+```
+
+---
+
+# 10. Complexity cheat sheet
+
+For now, remember this:
+
+| Operation             | Python list |     Complexity |
+| --------------------- | ----------- | -------------: |
+| Access `arr[i]`       | Yes         |           O(1) |
+| Update `arr[i]`       | Yes         |           O(1) |
+| `len(arr)`            | Yes         |           O(1) |
+| Search `x in arr`     | Yes         |           O(n) |
+| `append(x)`           | Yes         | O(1) amortized |
+| `pop()` from end      | Yes         |           O(1) |
+| Insert at beginning   | Yes         |           O(n) |
+| Remove from beginning | Yes         |           O(n) |
+
+Don't memorize the entire table yet. The **important concepts today are access vs search**.
+
+---
+
+# Your first practice
+
+Don't code immediately. Think first.
+
+### Problem 1 — Access
+
+Given:
+
+```python
+numbers = [15, 23, 8, 42, 10]
+```
+
+**Question:** How would you access the number `42` using its index?
+
+Also tell me:
+
+1. What is its index?
+2. What is the time complexity of accessing it?
+
+---
+
+### Problem 2 — Update
+
+Given:
+
+```python
+numbers = [10, 20, 30, 40, 50]
+```
+
+Change `30` to `100`.
+
+Write the Python code.
+
+Then tell me its time complexity.
+
+---
+
+### Problem 3 — Think about complexity
+
+Given:
+
+```python
+numbers = [5, 8, 2, 9, 1, 7]
+```
+
+Which of these is **O(1)** and which can be **O(n)**?
+
+```python
+numbers[4]
+```
+
+```python
+7 in numbers
+```
+
+---
+Problem 1 ✅
+numbers = [15, 23, 8, 42, 10]
+
+42 is at index 3.
+
+numbers[3]
+Access by index → O(1)
+Searching with something like 42 in numbers → O(n)
+2nd 
+numbers[2] = 100
+
+Updating by index → O(1)
+
+Problem 3 ✅
+
+Correct:
+
+numbers[4]
+
+→ direct access → O(1)
+
+7 in numbers
+
+→ potentially scan the list → O(n)
+
+ key understanding:
+Index known → direct access → O(1)
+Only value known → may need searching → O(n)
+.
