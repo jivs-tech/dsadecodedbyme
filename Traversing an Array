@@ -1,0 +1,84 @@
+Traversal simply means:
+
+Going through the elements of an array/list one by one.
+
+For example:
+
+numbers = [10, 20, 30, 40]
+
+Traversal means visiting:
+
+10 → 20 → 30 → 40
+Method 1 — Directly get each value
+for num in numbers:
+    print(num)
+
+This is usually the cleanest way when you only need the values. easiest way 
+
+Method 2 — Use the index
+for i in range(len(numbers)):
+    print(numbers[i])
+
+Here you're working with the index.
+
+This is useful when you need to modify elements or compare an element with another element using indices. 
+
+Example
+
+Suppose:
+
+numbers = [5, 8, 2, 9]
+
+We want to print every element.
+
+for num in numbers:
+    print(num)
+
+Output:
+
+5
+8
+2
+9
+
+Complexity:
+
+Time → O(n)
+Extra space → O(1)
+
+
+Why space O(1)?
+
+Because we're not creating another array containing n elements. We're just using one variable, num.
+____________________________________________________________
+now some examples:
+One important Python distinction
+
+Don't confuse:
+
+for i in numbers:
+
+with:
+
+for i in range(len(numbers)):
+
+The first gives you values:
+
+7, 3, 9, 2, 8
+
+The second gives you indices:
+
+0, 1, 2, 3, 4
+
+For example:
+
+for i in range(len(numbers)):
+    print(i, numbers[i])
+
+would produce:
+
+0 7
+1 3
+2 9
+3 2
+4 8
