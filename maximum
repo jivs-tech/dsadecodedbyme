@@ -1,0 +1,27 @@
+
+finding the maximum element we first consider that the first element is the maximum for assumtion
+and then we go ahead and compare it with other sequence of integers and as we 
+compare and find a higher no we assign it the title of maximum no simple.
+
+i am doing in phyton so their is always mostly a function version of the same 
+
+numbers = [12, 5, 27, 3, 19, 8]
+
+print(max(numbers))
+
+Time: O(n)
+Extra space: O(1)
+actual logic:
+___________________________________________________________
+
+num = [2,8,6,9,10,34,5]
+maxi = num[0]
+for i in range(len(num)):
+    if num[i] > maxi:
+        maxi = num[i]
+print("the maximum no is:",maxi)
+
+__________________________________________________________
+Complexity
+Time: O(n) — we examine every element.
+Extra space: O(1) — only maximum and i.
