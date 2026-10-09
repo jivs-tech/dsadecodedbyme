@@ -1,0 +1,102 @@
+ Counting Elements
+
+Counting means finding how many elements satisfy a condition.
+
+### 1. Count all elements
+
+If you simply want the number of elements:
+
+numbers = [7, 3, 9, 2, 8]
+
+print(len(numbers))
+
+
+Output:
+
+
+5
+
+
+* **Time:** O(1)
+* **Space:** O(1)
+
+---
+
+### 2. Count a specific value
+
+Example: How many times does `2` appear?
+
+
+numbers = [2, 5, 2, 8, 2, 9]
+
+count = 0
+
+for num in numbers:
+    if num == 2:
+        count += 1
+
+print(count)
+
+
+Output:
+
+
+3
+
+
+Why?
+
+* Start `count = 0`
+* See `2` → count becomes 1
+* See another `2` → 2
+* See another `2` → 3
+
+**Complexity:**
+
+* Time: **O(n)** — we may need to check every element.
+* Extra space: **O(1)** — only `count` is stored.
+
+Python also has:
+
+
+numbers.count(2)
+
+
+This is also O(n) time and O(1) extra space.
+
+### Important distinction
+
+| Operation          | Meaning                  | Time |
+| ------------------ | ------------------------ | ---: |
+| `len(numbers)`     | How many total elements? | O(1) |
+| `numbers.count(2)` | How many `2`s?           | O(n) |
+
+---
+
+### Your turn
+
+Without using `.count()`:
+numbers = [4, 7, 4, 2, 4, 9, 7]
+**Question:** How many times does `4` occur?
+
+Write:
+
+1. Your code
+2. Time complexity
+3. Space complexity
+
+-------------
+sol:
+to find the 4 's occurance we :
+
+numbers = [4, 7, 4, 2, 4, 9, 7]
+
+count = 0
+
+for i in numbers:
+  if i == 4:
+    count = count + 1   // or count += 1
+print(count)
+
+now the time complexities of this will be O(n) // one whole loop 
+and spacee:  O(1) // we are storing only one variable count apart from the input (Auxiliary Space remember!!)
