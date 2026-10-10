@@ -1,0 +1,302 @@
+ Reversing Arrays
+
+### 1. Concept
+
+Reversing a list means changing the order of its elements so that the last element becomes first and vice versa.
+
+Example:
+
+```
+numbers = [10, 20, 30, 40, 50]
+# Reversed: [50, 40, 30, 20, 10]
+```
+
+### 2. Why is it used?
+
+Reversal is common in interview problems involving arrays, strings, and two-pointer techniques.
+
+### 3. Python syntax
+
+Python offers shortcuts, but first understand the logic behind reversal.
+
+```
+numbers = [10, 20, 30, 40, 50]
+numbers.reverse()
+print(numbers)
+```
+
+Output: `[50, 40, 30, 20, 10]`
+
+The `reverse()` method modifies the original list.
+
+### 4. Complexity
+
+* Time: O(n)O(n)O(n)
+
+* Extra space: O(1)O(1)O(1) for Python's in-place `reverse()` method.
+This method changes the original list. 
+You don't need to implement the reversing logic yourself when using it.
+
+However, interviewers may ask you to reverse a list without using built-in methods,
+to test whether you understand the underlying algorithm.
+
+3. How do we reverse a list ourselves?
+
+Let's derive the algorithm together.
+
+Start with:
+
+Index:    0   1   2   3   4
+Value:   10  20  30  40  50
+
+Remember: Python list indices start at 0.
+
+We want to swap elements at opposite ends.
+ 
+
+Step 1: Swap the first and last elements.
+
+
+50
+Index 0
+20
+Index 1
+30
+Index 2
+40
+Index 3
+10
+Index 4
+
+10 and 50 exchange positions.
+
+Step 2: Swap the second and second-last elements.
+
+50
+Index 0
+40
+Index 1
+30
+Index 2
+20
+Index 3
+10
+Index 4
+
+40 and 20 exchange positions. The middle element, 30, stays where it is.
+
+The list is now reversed!
+
+4. How do we swap two elements in Python?
+
+Python allows this directly:
+numbers[0], numbers[4] = numbers[4], numbers[0]
+
+This swaps the values at indices 0 and 4 without needing a temporary variable.
+
+For a list of length 5:
+
+First index = 0
+
+Last index = len(numbers) - 1, which is 4
+
+Why subtract 1? Because a list of 5 elements has indices 0, 1, 2, 3, 4.
+
+How do we generalize this?
+
+Instead of manually writing each swap, we can use two variables:
+
+left starts at the first index.
+
+right starts at the last index.
+
+Swap the elements at those indices.
+
+Move left one step forward and right one step backward.
+
+Stop when left >= right.
+
+This is the two-pointer technique, which we'll study properly later. For now, just understand how it helps reverse a list.
+
+6. Complexity
+
+For a list of n elements:
+
+Time complexity: O(n), because approximately half the elements are swapped, which scales linearly with the list size.
+
+Extra space complexity: O(1), because we only need a fixed number of variables and modify the existing list.
+______________________________________________________________________________________________________________________________
+actual algoritm :
+Reversing Arrays (continued)
+
+You understand indexing and swapping. Now let's combine them into a complete algorithm.
+
+### 1. Build the algorithm
+
+Given:
+
+
+```
+numbers = [3, 6, 9, 12, 15]
+```
+
+We want:
+
+```
+[15, 12, 9, 6, 3]
+```
+
+We already know how to swap two elements. The challenge is to repeat the swaps automatically.
+
+Step 1: Create two variables.
+
+
+```
+left = 0
+right = len(numbers) - 1
+```
+
+* `left` points to the first element.
+
+* `right` points to the last element.
+
+Step 2: Swap the elements.
+
+
+
+```
+numbers[left], numbers[right] = numbers[right], numbers[left]
+```
+
+Step 3: Move both indices toward the center.
+
+
+```
+left += 1
+right -= 1
+```
+
+Step 4: Repeat until the pointers meet or cross.
+
+We use a `while` loop because we want to continue while `left < right`.
+
+### 2. Complete algorithm
+
+
+
+```
+numbers = [3, 6, 9, 12, 15]
+
+left = 0
+right = len(numbers) - 1
+
+while left < right:
+    numbers[left], numbers[right] = numbers[right], numbers[left]
+
+    left += 1
+    right -= 1
+
+print(numbers)
+```
+
+Output:
+
+```
+[15, 12, 9, 6, 3]
+```
+
+### 3. Dry run: how the loop works
+
+Initial state
+
+## 3
+
+0
+
+## 6
+
+1
+
+## 9
+
+2
+
+## 12
+
+3
+
+## 15
+
+4
+
+left = 0, right = 4
+
+Iteration 1: swap indices 0 and 4
+
+## 15
+
+0
+
+## 6
+
+1
+
+## 9
+
+2
+
+## 12
+
+3
+
+## 3
+
+4
+
+Now left = 1, right = 3.
+
+Iteration 2: swap indices 1 and 3
+
+## 15
+
+0
+
+## 12
+
+1
+
+## 9
+
+2
+
+## 6
+
+3
+
+## 3
+
+4
+
+Now left = 2, right = 2. The condition `left < right` is false, so the loop stops.
+
+The middle element does not need to move. Every pair of opposite elements has been swapped.
+
+### 4. Complexity
+
+* Time: O(n). We perform roughly n/2 swaps, and Big O ignores constant factors.
+
+* Extra space: O(1). We use only `left` and `right` plus a constant amount of temporary storage for swapping.
+
+* In-place: Yes. We modify the original list instead of creating another reversed list.
+
+### 5. Built-in method vs manual algorithm
+
+| Method                | What it does                           | Extra space  |
+| --------------------- | -------------------------------------- | ------------ |
+| `numbers.reverse()`   | Reverses the original list             |     O(1)     |
+| `numbers[::-1]`       | Creates a reversed copy                |     O(n)     |
+| Two-pointer algorithm | Reverses the original list using swaps |     O(1)     |
+
+`[::-1]` is Python slicing syntax. The negative step means traverse the sequence backward. You can learn its details later;
+you do not need it to understand the algorithm.
+
