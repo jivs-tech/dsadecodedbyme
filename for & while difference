@@ -1,0 +1,84 @@
+
+for loop vs while loop
+A loop repeats code. Python gives us two common ways to repeat code.
+for loop — when you know what to iterate over
+numbers = [10, 20, 30]for num in numbers:    print(num)
+
+
+
+Output: 10 20 30
+The loop visits each element in the list automatically. You don't manually advance to the next element.
+
+while loop — when repetition depends on a condition
+i = 0while i < 3:    print(i)    i += 1
+
+
+
+Output: 0 1 2
+The loop continues while i < 3 is true. You must update i yourself; otherwise, you might create an infinite loop.
+
+
+
+-------------------------------------------------------------------------------------------------
+| for loop                              | while loop                                            |
+| :-------------------------------------| :---------------------------------------------------- |
+| Iterates over a sequence or range     | Repeats while a condition is true                     |
+| Automatically advances through a list | You control how variables change                      |
+| Useful for visiting every element     | Useful when the stopping condition controls repetition|
+| Often simpler for counting elements   | Often convenient for two-pointer algorithms           |
+
+*Both can solve many of the same problems. Neither is inherently faster just because it uses a different loop.*
+
+-------------------------------------------REVERSE ARRAY ----------------------------------------
+
+Reverse an array using while
+This is the method you already learned.
+numbers = [1, 2, 3, 4, 5]
+left = 0
+right = len(numbers) - 1
+while left < right:    
+  numbers[left], numbers[right] = numbers[right], numbers[left]   
+  left += 1   
+  right -= 1
+
+print(numbers)
+//
+Output: [5, 4, 3, 2, 1]
+⚡Why while works well here: We stop when the two pointers meet or cross. We don't need to know the exact number of swaps beforehand.
+
+Reverse an array using for
+We can also use a for loop with range().
+numbers = [1, 2, 3, 4, 5]
+n = len(numbers)
+for i in range(n // 2):    
+  numbers[i], numbers[n - 1 - i] = numbers[n - 1 - i], numbers[i]
+print(numbers)
+
+
+Output: [5, 4, 3, 2, 1]
+
+Let's understand the unfamiliar syntax:
+- len(numbers) is 5.
+- n // 2 is 2. The // operator performs integer division.
+- range(2) produces 0, 1.
+- When i = 0, we swap indices 0 and 4.
+- When i = 1, we swap indices 1 and 3.
+- The middle element stays in place.
+Here, for works because we know we need exactly n // 2 swaps.
+
+| Method            | Time | Extra space | Modifies original? |
+| :---------------- | :--- | :--- | :--- |
+| Two-pointer while | O(n) | O(1) | Yes |
+| for + range()     | O(n) | O(1) | Yes |
+| numbers.reverse() | O(n) | O(1) | Yes |
+| numbers[::-1]     | O(n) | O(n) | No |
+
+
+What you should remember
+- Use for num in numbers when you want to process each element.
+- Use for i in range(...) when you need indices or a known number of iterations.
+- Use while condition when repetition depends on a condition, such as two pointers moving toward each other.
+- Reversing in place takes \(O(n)\) time and \(O(1)\) extra space.
+
+___________________________________________________________________________________________________
+
