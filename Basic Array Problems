@@ -1,0 +1,257 @@
+
+We'll learn the most common beginner interview patterns by solving problems that build on each other. 
+For each one, you'll get the explanation, code, complexity, and a practice question with a hidden answer.
+
+### Problem type 1: Finding the sum of an array
+
+1\. What does the problem ask?
+
+Given a list of numbers, calculate the total of all its elements.
+
+```
+numbers = [4, 7, 2, 9, 3]
+```
+
+The sum is (4+7+2+9+3=25).
+
+2\. How do we think about it?
+
+We need to visit every element and add it to a running total.
+
+Imagine a basket. Initially, the basket contains zero. Each time you visit a number, you add that number to the basket.
+
+Initial total
+
+## 0
+
+\+ 4
+
+Total = 4
+
+\+ 7
+
+Total = 11
+
+\+ 2
+
+Total = 13
+
+\+ 9
+
+Total = 22
+
+\+ 3
+
+Total = 25
+
+3\. Python code
+
+```
+numbers = [4, 7, 2, 9, 3]
+total = 0
+for num in numbers:    
+total += num
+print(total)
+```
+
+Output: `25`
+
+Understand these lines:
+
+- `total = 0`: initialize the running total.
+- `for num in numbers`: visit each element.
+- `total += num`: add the current element to the total.
+- `print(total)`: display the final result after the loop.
+
+4\. Complexity
+
+- Time: \\(O(n)\\), because every element is visited once.
+- Extra space: \\(O(1)\\), because only one running-total variable is needed.
+
+Python also has `sum(numbers)`, but implementing the loop teaches you the underlying interview technique.
+
+## Problem type 2: Finding the largest element
+
+Suppose the list is:
+
+```
+numbers = [12, 5, 27, 8, 19]
+```
+
+We want the answer `27`.
+
+### How to think about it
+
+We need to remember the largest number seen so far.
+
+Start by assuming the first element is the largest:
+
+```
+largest = numbers[0]
+```
+
+Then compare each remaining element with `largest`. If an element is bigger, update `largest`.
+
+```
+numbers = [12, 5, 27, 8, 19]
+largest = numbers[0]
+for num in numbers:    
+  if num > largest:        
+    largest = num
+
+print(largest)
+```
+
+Output: `27`
+
+Dry run:
+
+| Current number | Largest so far |
+| -------------- | -------------- |
+| 12             | 12             |
+| 5              | 12             |
+| 27             | 27             |
+| 8              | 27             |
+| 19             | 27             |
+
+We can start the loop at the first element because comparing it with itself is harmless.
+
+Why not initialize `largest = 0`? Because a list could contain only negative numbers, such as `[-8, -3, -12]`.
+Initializing from the first element works for both positive and negative numbers, assuming the list is nonempty.
+
+Complexity: Time (O(n)), extra space (O(1)).
+
+## Problem type 3: Counting elements that satisfy a condition
+
+This builds directly on the counting technique you learned earlier.
+
+Count how many numbers are greater than `5`:
+
+```
+numbers = [2, 8, 4, 9, 6]
+count = 0
+for num in numbers:    
+  if num > 5:  
+    count += 1
+print(count)
+```
+
+Output: `3`
+
+The numbers satisfying the condition are `8`, `9`, and `6`.
+Pattern: Initialize a counter, traverse the list, check a condition, and increment the counter when the condition is true.
+
+- Time: (O(n))
+- Extra space: (O(1))
+
+## Your practice set
+
+Try these three problems before opening their answers. They progress from basic traversal to combining multiple ideas.
+
+## Problem 1 — Sum of even numbers
+
+Given:
+
+```
+numbers = [1, 4, 7, 2, 8]
+```
+
+Calculate the sum of only the even numbers. Expected output: `14`.
+
+Hint: Use a running total and `num % 2 == 0`.
+
+
+Solution:
+
+```
+num = [1, 4, 7, 2, 8]
+
+#sum of evn only
+sum = 0
+for i in num:
+    if i % 2 == 0:
+        sum = sum + i
+print(sum)
+```
+
+Output: `14`
+
+Pattern: Traversal + condition + accumulation. Time (O(n)), extra space (O(1)).
+
+## Problem 2 — Find the smallest element
+
+Given:
+
+```
+numbers = [14, 6, 21, 3, 11]
+```
+
+Find the smallest number without using `min()`.
+
+Hint: Initialize `smallest` using the first element. Replace it whenever you find a smaller number.
+
+Solution:
+
+```
+num = [14, 6, 21, 3, 11]
+#smallest num
+#algo
+smal = num[0]
+for i in num:
+    if i < smal:
+        smal = i
+print(smal)
+```
+
+Output: `3`
+
+Pattern: Maintain the best candidate seen so far. Time \\(O(n)\\), extra space \\(O(1)\\).
+
+## Problem 3 — Count numbers greater than the average
+
+Given:
+
+```
+numbers = [2, 4, 6, 8, 10]
+```
+
+First calculate the average, then count how many elements are greater than it.
+
+Expected output: `2` because the average is `6`, and the numbers greater than `6` are `8` and `10`.
+
+Hint: This requires two traversals. First calculate the sum and average; then count the qualifying elements.
+
+Solution:
+
+```
+num = [2, 4, 6, 8, 10]
+# count the number greater than the avg 
+
+count = 0 
+sum = 0 
+for i in num:
+    sum += i
+avg = sum / len(num)
+print("average" , avg)
+
+for i in num:
+    if i > avg:
+        count += 1
+print(count)
+```
+
+Output: `2`
+
+Pattern: A problem may need multiple passes when one result, such as the average, is needed before another calculation can begin. Time \\(O(n)\\), extra space \\(O(1)\\).
+
+## What you should know before moving on
+
+- Sum: accumulate values using `total += num`.
+- Maximum/minimum: maintain the best value seen so far.
+- Counting: increment a counter when a condition is satisfied.
+- Multiple passes: revisit the list when a later calculation depends on an earlier result.
+
+All three patterns take (O(n)) time and (O(1)) extra space here.
+
+{Next in Phase 1 is Topic 16: In-place operations—changing a list directly without creating another list. 
+We'll connect this to your reversing algorithm and learn how to modify elements efficiently.}
